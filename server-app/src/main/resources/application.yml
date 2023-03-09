@@ -1,0 +1,22 @@
+logging:
+  level:
+    root: info
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54321/messenger_dev
+    username: messenger
+    password: messenger
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        default_schema: public
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092

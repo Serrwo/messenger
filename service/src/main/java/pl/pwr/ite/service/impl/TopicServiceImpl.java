@@ -2,6 +2,7 @@ package pl.pwr.ite.service.impl;
 
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQuery;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import pl.pwr.ite.model.entity.QTopic;

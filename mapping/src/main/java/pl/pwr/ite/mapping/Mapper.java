@@ -1,6 +1,7 @@
 package pl.pwr.ite.mapping;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -23,7 +24,7 @@ public interface Mapper<S, D> {
 
     <Sx, Dx> void map(Consumer<Dx[]> setter, Iterable<Sx> source, Mapper<Sx, Dx> mapper);
 
-    List<D> map(Iterable<S> source);
+    List<D> map(Iterable<? extends S> source);
 
     void transform(S source, D destination);
 }

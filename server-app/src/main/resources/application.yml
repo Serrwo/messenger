@@ -20,3 +20,5 @@ spring:
       ddl-auto: update
   kafka:
     bootstrap-servers: localhost:9092
+    group-id: groupId
+    client-id: clientId

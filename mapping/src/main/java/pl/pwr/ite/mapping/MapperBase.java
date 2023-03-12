@@ -76,7 +76,7 @@ public abstract class MapperBase<S, D> implements Mapper<S, D> {
     }
 
     @Override
-    public List<D> map(Iterable<S> source) {
+    public List<D> map(Iterable<? extends S> source) {
         if(source == null) {
             return null;
         }

@@ -11,7 +11,7 @@ public class MessageDto {
 
     private String message;
 
-    private String topic;
+    private TopicDto topic;
 
     private LocalDateTime time;
 }

@@ -20,22 +20,25 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    public Map<String, Object> producerConfig() {
+    @Value("${spring.kafka.client-id}")
+    private String clientId;
+
+    public Map<String, Object> messageProducerConfig() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ProducerConfig.CLIENT_ID_CONFIG, "clientId");
+        props.put(ProducerConfig.CLIENT_ID_CONFIG, clientId);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, MessageSerializer.class);
         return props;
     }
 
     @Bean
-    public ProducerFactory<String, MessageDto> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfig());
+    public ProducerFactory<String, MessageDto> messageProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(messageProducerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, MessageDto> kafkaTemplate(ProducerFactory<String, MessageDto> producerFactory) {
+    public KafkaTemplate<String, MessageDto> messageKafkaTemplate(ProducerFactory<String, MessageDto> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
 

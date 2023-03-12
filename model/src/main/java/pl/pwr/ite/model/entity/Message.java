@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Table
 @Entity
@@ -19,9 +18,21 @@ public class Message extends EntityBase {
     @Column(nullable = false, length = 1024)
     private String message;
 
-    @Column(nullable = false)
-    private String topic;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Topic topic;
+
+    @Column(nullable = false, insertable = false, updatable = false, name = "topic_id")
+    private UUID topicId;
+
+//    @Column(nullable = false)
+//    private String topic;
 
     @Column(nullable = false)
     private LocalDateTime time;
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+        this.topicId = topic == null ? null : topic.getId();
+    }
 }

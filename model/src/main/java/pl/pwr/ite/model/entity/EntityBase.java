@@ -24,7 +24,7 @@ public class EntityBase {
 
     @Id
     @GeneratedValue(generator = "preserving_uuid_generator")
-    @GenericGenerator(name = "preserving_uuid_generator", strategy = "pl.codiatec.viermobil.model.hibernate.PreservingUUIDGenerator")
+    @GenericGenerator(name = "preserving_uuid_generator", strategy = "pl.pwr.ite.model.hibernate.PreservingUUIDGenerator")
     @ToString.Include
     @EqualsAndHashCode.Include
     private UUID id;

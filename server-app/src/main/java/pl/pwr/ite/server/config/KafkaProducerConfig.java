@@ -38,4 +38,6 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, MessageDto> kafkaTemplate(ProducerFactory<String, MessageDto> producerFactory) {
         return new KafkaTemplate<>(producerFactory);
     }
+
+
 }

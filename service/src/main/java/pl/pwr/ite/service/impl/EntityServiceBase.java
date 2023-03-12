@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public abstract class EntityServiceBase<E extends EntityBase> implements EntityService<E> {
 
-    private final JpaRepository<E, UUID> repository;
+    protected final JpaRepository<E, UUID> repository;
 
     protected EntityServiceBase(JpaRepository<E, UUID> repository) {
         this.repository = repository;

@@ -18,8 +18,6 @@ public class MessageController {
 
     private final MessageFacade messageFacade;
 
-    private final MessageKafkaService messageKafkaService;
-
     @GetMapping
     public ResponseEntity<Collection<MessageDto>> list() {
         return ResponseEntity.ok(messageFacade.listAllDto());
@@ -28,6 +26,6 @@ public class MessageController {
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void sendMessage(@RequestBody MessageDto dto) {
-        messageKafkaService.produce(Topics.CENSORSHIP_DEFAULT, dto);
+        messageFacade.produce(Topics.CENSORSHIP_DEFAULT, dto);
     }
 }

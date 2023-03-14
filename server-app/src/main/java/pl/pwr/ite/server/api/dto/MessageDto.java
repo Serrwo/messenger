@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MessageDto {
 
-
     private String message;
 
-//    private LocalDateTime time;
+    private String username;
 }

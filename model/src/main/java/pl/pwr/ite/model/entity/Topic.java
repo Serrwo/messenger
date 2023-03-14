@@ -33,6 +33,9 @@ public class Topic extends EntityBase {
     @Column(nullable = false)
     private Short replicationFactor;
 
+    @Column(length = 64)
+    private String kafkaId;
+
 //    @OneToMany(mappedBy = "topic")
 //    private List<Message> messages = new ArrayList<>();
 }

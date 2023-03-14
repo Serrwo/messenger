@@ -18,21 +18,9 @@ public class Message extends EntityBase {
     @Column(nullable = false, length = 1024)
     private String message;
 
-//    @ManyToOne
-//    @JoinColumn(nullable = false)
-//    private Topic topic;
-//
-//    @Column(nullable = false, insertable = false, updatable = false, name = "topic_id")
-//    private UUID topicId;
-
-//    @Column(nullable = false)
-//    private String topic;
-
     @Column(nullable = false)
     private LocalDateTime time;
 
-//    public void setTopic(Topic topic) {
-//        this.topic = topic;
-//        this.topicId = topic == null ? null : topic.getId();
-//    }
+    @Column(nullable = false, length = 100)
+    private String username;
 }

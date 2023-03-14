@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public interface KafkaAdminService {
-    Map<String, TopicListing> listTopics() throws ExecutionException, InterruptedException;
+    Map<String, TopicListing> listTopics(boolean listInternal) throws ExecutionException, InterruptedException;
 
     void registerTopic(Topic topic);
 }

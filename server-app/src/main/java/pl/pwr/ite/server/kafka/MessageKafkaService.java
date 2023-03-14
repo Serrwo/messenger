@@ -1,7 +1,9 @@
 package pl.pwr.ite.server.kafka;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,7 @@ import pl.pwr.ite.service.MessageService;
 import pl.pwr.ite.service.impl.KafkaServiceBase;
 
 @Component
+@Slf4j
 public class MessageKafkaService extends KafkaServiceBase<String, MessageDto, Message, MessageMapper, MessageService> {
 
     @Value("${spring.kafka.group-id}")
@@ -26,7 +29,7 @@ public class MessageKafkaService extends KafkaServiceBase<String, MessageDto, Me
 
     private static final String DEFAULT_GROUP_ID = "defaultMessengerGroup";
 
-    public MessageKafkaService(MessageService service, MessageMapper mapper, MessageFacade messageFacade, KafkaTemplate<String, MessageDto> producerTemplate, ForbiddenWordService forbiddenWordService) {
+    public MessageKafkaService(MessageService service, MessageMapper mapper, @Lazy MessageFacade messageFacade, KafkaTemplate<String, MessageDto> producerTemplate, ForbiddenWordService forbiddenWordService) {
         super(Topics.MESSAGE_BROADCAST_DEFAULT, producerTemplate, service, mapper);
         this.messageFacade = messageFacade;
         this.forbiddenWordService = forbiddenWordService;
@@ -44,5 +47,6 @@ public class MessageKafkaService extends KafkaServiceBase<String, MessageDto, Me
     @KafkaListener(topics = Topics.MESSAGE_BROADCAST_DEFAULT, groupId = DEFAULT_GROUP_ID, containerFactory = "messageConsumerContainerFactory")
     public void consumeBroadcast(ConsumerRecord<String, MessageDto> record) {
         MessageDto message = record.value();
+        log.info(message.getUsername() + ": " + message.getMessage());
     }
 }

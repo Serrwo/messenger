@@ -15,8 +15,8 @@ public class MessageMapper extends MapperBase<Message, MessageDto> {
     @Override
     public void transform(Message source, MessageDto destination) {
         destination.setMessage(source.getMessage());
-        destination.setTime(source.getTime());
+//        destination.setTime(source.getTime());
 
-        map(destination::setTopic, source.getTopic(), topicMapper);
+//        map(destination::setTopic, source.getTopic(), topicMapper);
     }
 }

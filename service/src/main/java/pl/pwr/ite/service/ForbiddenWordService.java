@@ -11,6 +11,4 @@ public interface ForbiddenWordService extends EntityService<ForbiddenWord>{
    Iterator<ForbiddenWord> iterate();
 
    Message censorMessage(Message messageToCensor);
-
-   Pattern compileCensorPattern();
 }

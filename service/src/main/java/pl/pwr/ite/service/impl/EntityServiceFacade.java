@@ -21,6 +21,14 @@ public abstract class EntityServiceFacade<E extends EntityBase, D, S extends Ent
         return (D) this.mapper.map(entity);
     }
 
+    public E save(E entity) {
+        return (E) service.save(entity);
+    }
+
+    public E saveAndFlush(E entity) {
+        return (E) service.saveAndFlush(entity);
+    }
+
     public Collection<D> map(Collection<E> entities) {
         return (Collection<D>) this.mapper.map(entities);
     }

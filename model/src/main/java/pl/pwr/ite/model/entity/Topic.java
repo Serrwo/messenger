@@ -33,6 +33,6 @@ public class Topic extends EntityBase {
     @Column(nullable = false)
     private Short replicationFactor;
 
-    @OneToMany(mappedBy = "topic")
-    private List<Message> messages = new ArrayList<>();
+//    @OneToMany(mappedBy = "topic")
+//    private List<Message> messages = new ArrayList<>();
 }

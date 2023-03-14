@@ -30,14 +30,14 @@ public class MessageFacade extends EntityServiceFacade<Message, MessageDto, Mess
     public Message create(MessageDto dto) {
         Message message = new Message();
 
-        UUID topicId = dto.getTopic().getId();
-        Topic topic = topicService.findById(topicId);
-        if(topic == null) {
-            throw new IllegalArgumentException(String.format("Topic with ID '%s' not found.", topicId));
-        }
+//        UUID topicId = dto.getTopic().getId();
+//        Topic topic = topicService.findById(topicId);
+//        if(topic == null) {
+//            throw new IllegalArgumentException(String.format("Topic with ID '%s' not found.", topicId));
+//        }
 
         message.setMessage(dto.getMessage());
-        message.setTopic(topic);
+//        message.setTopic(topic);
         message.setTime(clockService.getCurrentTime());
 
         return message;
